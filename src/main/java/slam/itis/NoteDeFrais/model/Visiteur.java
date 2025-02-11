@@ -1,14 +1,15 @@
-package slam.itis.NoteDeFrais.model;
+package slam.itis.notedefrais.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import jakarta.persistence.*;
-import java.util.List;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Visiteur {
@@ -24,13 +25,16 @@ public class Visiteur {
     private LocalDate dateEmbauche;
     private String login;
     private String mdp;
+    // rajouter un role
 
     // Relation avec FicheFrais
-    @OneToMany(mappedBy = "visiteur", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "visiteur", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FicheFrais> fichesFrais;
 
     // Constructeurs
 
+    public Visiteur(){}
+    
     public Visiteur(String nom, String prenom, String adresse, String ville, String cp, LocalDate dateEmbauche, String login, String mdp) {
         this.nom = nom;
         this.prenom = prenom;

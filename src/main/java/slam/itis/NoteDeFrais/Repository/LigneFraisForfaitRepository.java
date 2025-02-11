@@ -1,11 +1,11 @@
-package slam.itis.NoteDeFrais.Repository;
+package slam.itis.notedefrais.Repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import slam.itis.NoteDeFrais.model.LigneFraisForfait;
+import slam.itis.notedefrais.model.LigneFraisForfait;
 
 
 @Repository

@@ -1,4 +1,4 @@
-package slam.itis.NoteDeFrais.service;
+package slam.itis.notedefrais.service;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import slam.itis.NoteDeFrais.Repository.VisiteurRepository;
-import slam.itis.NoteDeFrais.model.Visiteur;
+import slam.itis.notedefrais.Repository.VisiteurRepository;
+import slam.itis.notedefrais.model.Visiteur;
 
 @Service
 public class VisiteurService {
@@ -42,6 +42,10 @@ public class VisiteurService {
 
     public Visiteur getVisiteurByLogin(String login) {
         return visiteurRepository.findByLogin(login);
+    }
+
+    public Visiteur getVisiteurByMdp(String mdp) {
+        return visiteurRepository.findByMdp(mdp);
     }
 }
 

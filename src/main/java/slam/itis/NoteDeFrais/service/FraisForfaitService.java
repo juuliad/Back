@@ -1,12 +1,12 @@
-package slam.itis.NoteDeFrais.service;
+package slam.itis.notedefrais.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import slam.itis.NoteDeFrais.Repository.FraisForfaitRepository;
-import slam.itis.NoteDeFrais.model.FraisForfait;
+import slam.itis.notedefrais.Repository.FraisForfaitRepository;
+import slam.itis.notedefrais.model.FraisForfait;
 
 @Service
 public class FraisForfaitService {

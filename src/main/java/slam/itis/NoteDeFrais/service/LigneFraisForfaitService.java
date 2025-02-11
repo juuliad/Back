@@ -1,12 +1,12 @@
-package slam.itis.NoteDeFrais.service;
+package slam.itis.notedefrais.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import slam.itis.NoteDeFrais.Repository.LigneFraisForfaitRepository;
-import slam.itis.NoteDeFrais.model.LigneFraisForfait;
+import slam.itis.notedefrais.Repository.LigneFraisForfaitRepository;
+import slam.itis.notedefrais.model.LigneFraisForfait;
 
 @Service
 public class LigneFraisForfaitService {

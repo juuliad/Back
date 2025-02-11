@@ -1,4 +1,4 @@
-package slam.itis.NoteDeFrais.service;
+package slam.itis.notedefrais.service;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import slam.itis.NoteDeFrais.Repository.LigneFraisHorsForfaitRepository;
-import slam.itis.NoteDeFrais.model.LigneFraisHorsForfait;
+import slam.itis.notedefrais.Repository.LigneFraisHorsForfaitRepository;
+import slam.itis.notedefrais.model.LigneFraisHorsForfait;
 
 @Service
 public class LigneFraisHorsForfaitService {

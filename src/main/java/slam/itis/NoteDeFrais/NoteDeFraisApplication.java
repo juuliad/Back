@@ -1,4 +1,4 @@
-package slam.itis.NoteDeFrais;
+package slam.itis.notedefrais;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

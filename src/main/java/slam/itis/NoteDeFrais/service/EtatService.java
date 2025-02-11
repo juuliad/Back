@@ -1,12 +1,12 @@
-package slam.itis.NoteDeFrais.service;
+package slam.itis.notedefrais.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import slam.itis.NoteDeFrais.Repository.EtatRepository;
-import slam.itis.NoteDeFrais.model.Etat;
+import slam.itis.notedefrais.Repository.EtatRepository;
+import slam.itis.notedefrais.model.Etat;
 
 @Service
 public class EtatService {
@@ -31,5 +31,9 @@ public class EtatService {
 
     public void deleteEtatById(Long id) {
         etatRepository.deleteById(id);
+    }
+
+    public Etat getEtatByLibelle(String libelle) {
+        return etatRepository.findByLibelle(libelle);
     }
 }

@@ -1,9 +1,9 @@
-package slam.itis.NoteDeFrais.Repository;
+package slam.itis.notedefrais.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import slam.itis.NoteDeFrais.model.FraisForfait;
+import slam.itis.notedefrais.model.FraisForfait;
 
 @Repository
 public interface FraisForfaitRepository extends JpaRepository<FraisForfait, Long> {

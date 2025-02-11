@@ -1,4 +1,4 @@
-package slam.itis.NoteDeFrais.model;
+package slam.itis.notedefrais.model;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;

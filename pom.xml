@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>GSB_GestionDesFrais</artifactId>
+	<artifactId>notedefrais</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>GSB_GestionDesFrais</name>
-	<description>Project for Spring Boot by Thanarol</description>
+	<name>notedefrais</name>
+	<description>Project for Spring Boot by Julia</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -65,7 +65,6 @@
         <artifactId>modelmapper</artifactId>
         <version>3.0.0</version>
         </dependency>
-		
 	</dependencies>
 
 	<build>

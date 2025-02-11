@@ -1,4 +1,4 @@
-package slam.itis.NoteDeFrais.service;
+package slam.itis.notedefrais.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import slam.itis.NoteDeFrais.Repository.FicheFraisRepository;
-import slam.itis.NoteDeFrais.model.FicheFrais;
+import slam.itis.notedefrais.Repository.FicheFraisRepository;
+import slam.itis.notedefrais.model.FicheFrais;
 
 @Service
 public class FicheFraisService {

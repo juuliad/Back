@@ -1,4 +1,4 @@
-package slam.itis.NoteDeFrais.model;
+package slam.itis.notedefrais.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

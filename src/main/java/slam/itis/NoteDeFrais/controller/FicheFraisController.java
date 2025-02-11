@@ -1,4 +1,4 @@
-package slam.itis.NoteDeFrais.controller;
+package slam.itis.notedefrais.controller;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import slam.itis.NoteDeFrais.model.FicheFrais;
-import slam.itis.NoteDeFrais.service.FicheFraisService;
+import slam.itis.notedefrais.model.FicheFrais;
+import slam.itis.notedefrais.service.FicheFraisService;
 
 @RestController
 @RequestMapping("/api/noteFrais")
