@@ -42,6 +42,11 @@ public class VisiteurService {
 
     public Visiteur getVisiteurByLogin(String login) {
         return visiteurRepository.findByLogin(login);
+    }    
+
+    public Visiteur getVisiteurByMdp(String mdp) {
+        return visiteurRepository.findByMdp(mdp);
     }
+
 }
 

@@ -11,6 +11,7 @@ import slam.itis.NoteDeFrais.model.Visiteur;
 @Repository
 public interface VisiteurRepository extends JpaRepository<Visiteur, Long> {
     Visiteur findByLogin(String login);
+    Visiteur findByMdp(String mdp);
     List<Visiteur> findByVille(String ville);
     List<Visiteur> findByDateEmbaucheAfter(LocalDate date);
 }

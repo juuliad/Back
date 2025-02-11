@@ -3,7 +3,6 @@ package slam.itis.NoteDeFrais.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import slam.itis.NoteDeFrais.Repository.EtatRepository;
@@ -14,7 +13,6 @@ public class EtatService {
 
     private final EtatRepository etatRepository;
 
-    @Autowired
     public EtatService(EtatRepository etatRepository) {
         this.etatRepository = etatRepository;
     }
