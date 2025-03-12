@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import slam.itis.notedefrais.model.LoginRequest;
 import slam.itis.notedefrais.model.Visiteur;
 import slam.itis.notedefrais.service.VisiteurService;
 
@@ -59,9 +62,14 @@ public class VisiteurController {
         return visiteurService.getVisiteursEmbauchesApres(localDate);
     }
 
-    // Récupérer un visiteur par login
-    @GetMapping("/login/{login}")
-    public Visiteur getVisiteurByLogin(@PathVariable String login) {
-        return visiteurService.getVisiteurByLogin(login);
+   // VisiteurController.java
+@PostMapping("/login")
+public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+    Visiteur visiteur = visiteurService.getVisiteurByLogin(loginRequest.getUsername());
+    if (visiteur != null && visiteur.getMdp().equals(loginRequest.getPassword())) {
+        return ResponseEntity.ok("Connexion réussie");
+    } else {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Nom d'utilisateur ou mot de passe incorrect");
     }
+}
 }
