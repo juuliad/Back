@@ -41,9 +41,11 @@ public class FicheFraisController {
     // 🔹 Ajouter une nouvelle fiche de frais
     @PostMapping
     public ResponseEntity<FicheFrais> createFicheFrais(@RequestBody FicheFrais ficheFrais) {
+        System.out.println("📩 Nouvelle fiche de frais reçue : " + ficheFrais);
         FicheFrais newFicheFrais = service.createFicheFrais(ficheFrais);
         return ResponseEntity.status(HttpStatus.CREATED).body(newFicheFrais);
     }
+    
 
     // 🔹 Modifier une fiche de frais existante
     @PutMapping("/{id}")

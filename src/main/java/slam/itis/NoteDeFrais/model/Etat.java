@@ -2,6 +2,8 @@ package slam.itis.NoteDeFrais.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,11 +16,11 @@ public class Etat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String libelle;
 
     // Relation avec FicheFrais
     @OneToMany(mappedBy = "etat", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<FicheFrais> fichesFrais;
 
     // Constructeurs

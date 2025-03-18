@@ -1,21 +1,21 @@
 package slam.itis.NoteDeFrais.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import jakarta.persistence.*;
-import java.util.List;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Visiteur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nom;
     private String prenom;
     private String adresse;
@@ -25,8 +25,12 @@ public class Visiteur {
     private String login;
     private String mdp;
 
+        // Constructeur par défaut
+        public Visiteur() {
+            // Ce constructeur peut rester vide
+        }
     // Relation avec FicheFrais
-    @OneToMany(mappedBy = "visiteur", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "visiteur", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FicheFrais> fichesFrais;
 
     // Constructeurs
@@ -122,4 +126,5 @@ public class Visiteur {
     public void setFichesFrais(List<FicheFrais> fichesFrais) {
         this.fichesFrais = fichesFrais;
     }
+    
 }

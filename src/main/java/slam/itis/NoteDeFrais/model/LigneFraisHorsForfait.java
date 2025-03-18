@@ -7,8 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import jakarta.persistence.*;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class LigneFraisHorsForfait {
@@ -16,14 +16,14 @@ public class LigneFraisHorsForfait {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Relation avec FicheFrais (ManyToOne : plusieurs lignes hors forfait pour une fiche)
-    @ManyToOne
-    @JoinColumn(name = "fiche_frais_id", nullable = false) // Clé étrangère
-    private FicheFrais ficheFrais;
-
     private LocalDate date;
     private Double montant;
     private String libelle;
+
+        // Relation avec FicheFrais (ManyToOne : plusieurs lignes hors forfait pour une fiche)
+        @ManyToOne
+        @JoinColumn(name = "fiche_frais_id", nullable = false) // Clé étrangère
+        private FicheFrais ficheFrais;
 
     // Constructeurs
 

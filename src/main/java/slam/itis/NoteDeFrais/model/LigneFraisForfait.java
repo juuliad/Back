@@ -12,7 +12,6 @@ public class LigneFraisForfait {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String mois;
 
     // Relation avec FicheFrais
