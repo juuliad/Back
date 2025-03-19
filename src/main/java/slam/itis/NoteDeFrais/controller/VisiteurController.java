@@ -1,6 +1,5 @@
 package slam.itis.notedefrais.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,19 +46,6 @@ public class VisiteurController {
     @DeleteMapping("/{id}")
     public void deleteVisiteur(@PathVariable Long id) {
         visiteurService.deleteVisiteur(id);
-    }
-
-    // Récupérer les visiteurs par ville
-    @GetMapping("/ville/{ville}")
-    public List<Visiteur> getVisiteursByVille(@PathVariable String ville) {
-        return visiteurService.getVisiteursByVille(ville);
-    }
-
-    // Récupérer les visiteurs embauchés après une date
-    @GetMapping("/embaucheApres/{date}")
-    public List<Visiteur> getVisiteursEmbauchesApres(@PathVariable String date) {
-        LocalDate localDate = LocalDate.parse(date); // Conversion String → LocalDate
-        return visiteurService.getVisiteursEmbauchesApres(localDate);
     }
 
    // VisiteurController.java

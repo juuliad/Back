@@ -1,12 +1,15 @@
 package slam.itis.notedefrais.model;
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.*;
-import java.util.List;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class FicheFrais {
@@ -21,12 +24,12 @@ public class FicheFrais {
 
     // Relation avec Visiteur
     @ManyToOne
-    @JoinColumn(name = "visiteur_id", nullable = false) // Clé étrangère
+    @JoinColumn(name = "visiteur_id") // Clé étrangère
     private Visiteur visiteur;
 
     // Relation avec Etat
     @ManyToOne
-    @JoinColumn(name = "etat_id", nullable = false) // Clé étrangère
+    @JoinColumn(name = "etat_id") // Clé étrangère
     private Etat etat;
 
     // Relation avec LigneFraisForfait
@@ -37,16 +40,7 @@ public class FicheFrais {
     @OneToMany(mappedBy = "ficheFrais", cascade = CascadeType.ALL)
     private List<LigneFraisHorsForfait> lignesFraisHorsForfait;
 
-    // Constructeurs
-
-    public FicheFrais(String mois, Integer nbJustificatifs, Double montantValide, LocalDate dateModif, Visiteur visiteur, Etat etat) {
-        this.mois = mois;
-        this.nbJustificatifs = nbJustificatifs;
-        this.montantValide = montantValide;
-        this.dateModif = dateModif;
-        this.visiteur = visiteur;
-        this.etat = etat;
-    }
+   
 
     // Getters et Setters
     public Long getId() {

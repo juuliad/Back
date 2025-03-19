@@ -1,6 +1,5 @@
 package slam.itis.notedefrais.service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,14 +29,6 @@ public class VisiteurService {
 
     public void deleteVisiteur(Long id) {
         visiteurRepository.deleteById(id);
-    }
-
-    public List<Visiteur> getVisiteursByVille(String ville) {
-        return visiteurRepository.findByVille(ville);
-    }
-
-    public List<Visiteur> getVisiteursEmbauchesApres(LocalDate date) {
-        return visiteurRepository.findByDateEmbaucheAfter(date);
     }
 
     public Visiteur getVisiteurByLogin(String login) {
