@@ -1,6 +1,4 @@
 package slam.itis.NoteDeFrais.model;
-
-import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -16,32 +14,19 @@ public class Visiteur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nom;
-    private String prenom;
-    private String adresse;
-    private String ville;
-    private String cp;
-    private LocalDate dateEmbauche;
     private String login;
     private String mdp;
+    // rajouter un role
 
-        // Constructeur par défaut
-        public Visiteur() {
-            // Ce constructeur peut rester vide
-        }
     // Relation avec FicheFrais
     @OneToMany(mappedBy = "visiteur", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<FicheFrais> fichesFrais;
 
     // Constructeurs
 
-    public Visiteur(String nom, String prenom, String adresse, String ville, String cp, LocalDate dateEmbauche, String login, String mdp) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.adresse = adresse;
-        this.ville = ville;
-        this.cp = cp;
-        this.dateEmbauche = dateEmbauche;
+    public Visiteur(){}
+
+    public Visiteur( String login, String mdp) {
         this.login = login;
         this.mdp = mdp;
     }
@@ -53,54 +38,6 @@ public class Visiteur {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public String getVille() {
-        return ville;
-    }
-
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
-
-    public String getCp() {
-        return cp;
-    }
-
-    public void setCp(String cp) {
-        this.cp = cp;
-    }
-
-    public LocalDate getDateEmbauche() {
-        return dateEmbauche;
-    }
-
-    public void setDateEmbauche(LocalDate dateEmbauche) {
-        this.dateEmbauche = dateEmbauche;
     }
 
     public String getLogin() {
@@ -126,5 +63,4 @@ public class Visiteur {
     public void setFichesFrais(List<FicheFrais> fichesFrais) {
         this.fichesFrais = fichesFrais;
     }
-    
 }

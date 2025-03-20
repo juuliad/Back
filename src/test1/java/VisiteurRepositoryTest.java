@@ -1,19 +1,15 @@
-package test1.java;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.LocalDate;
-
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import slam.itis.NoteDeFrais.Repository.VisiteurRepository;
-import slam.itis.NoteDeFrais.model.Visiteur;
+import slam.itis.notedefrais.Repository.VisiteurRepository;
+import slam.itis.notedefrais.model.Visiteur;
 
-@SpringBootTest(properties="Spring.Config.name=application-test")
+@SpringBootTest(properties = "Spring.Config.name=application-test")
 class VisiteurRepositoryTest {
-    
+
     @Autowired
     private VisiteurRepository visiteurRepository;
 
@@ -22,8 +18,8 @@ class VisiteurRepositoryTest {
         // Test un mot de passe valide
         String validPassword = "ValidPass123";
         
-        // Utilisation du constructeur complet avec tous les paramètres nécessaires
-        Visiteur visiteurValid = new Visiteur("NomValid", "PrenomValid", "AdresseValid", "VilleValid", "12345", LocalDate.now(), "valid@example.com", validPassword);
+        // Création d'un visiteur avec uniquement les champs nécessaires
+        Visiteur visiteurValid = new Visiteur("valid@example.com", validPassword);
         visiteurRepository.save(visiteurValid);
 
         // Vérifier que la méthode findByMdp trouve le visiteur avec le mot de passe valide
@@ -32,7 +28,7 @@ class VisiteurRepositoryTest {
 
         // Test un mot de passe trop court
         String shortPassword = "short";
-        Visiteur visiteurShort = new Visiteur("NomShort", "PrenomShort", "AdresseShort", "VilleShort", "54321", LocalDate.now(), "short@example.com", shortPassword);
+        Visiteur visiteurShort = new Visiteur("short@example.com", shortPassword);
         visiteurRepository.save(visiteurShort);
 
         // Vérifier que la méthode findByMdp retourne null pour un mot de passe trop court
@@ -41,7 +37,7 @@ class VisiteurRepositoryTest {
 
         // Test un mot de passe trop long
         String longPassword = "ThisIsAReallyLongPassword123";
-        Visiteur visiteurLong = new Visiteur("NomLong", "PrenomLong", "AdresseLong", "VilleLong", "67890", LocalDate.now(), "long@example.com", longPassword);
+        Visiteur visiteurLong = new Visiteur("long@example.com", longPassword);
         visiteurRepository.save(visiteurLong);
 
         // Vérifier que la méthode findByMdp trouve le visiteur avec un mot de passe long

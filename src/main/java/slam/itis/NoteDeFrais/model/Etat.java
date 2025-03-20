@@ -25,6 +25,10 @@ public class Etat {
 
     // Constructeurs
 
+    // ✅ Constructeur par défaut requis pour la désérialisation
+    public Etat() {
+    }
+    
     public Etat(String libelle) {
         this.libelle = libelle;
     }

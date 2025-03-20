@@ -1,10 +1,10 @@
 package slam.itis.NoteDeFrais.controller;
-
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import slam.itis.NoteDeFrais.model.LoginRequest;
 import slam.itis.NoteDeFrais.model.Visiteur;
 import slam.itis.NoteDeFrais.service.VisiteurService;
+
 
 @RestController
 @RequestMapping("/api/visiteurs")
@@ -46,22 +48,14 @@ public class VisiteurController {
         visiteurService.deleteVisiteur(id);
     }
 
-    // Récupérer les visiteurs par ville
-    @GetMapping("/ville/{ville}")
-    public List<Visiteur> getVisiteursByVille(@PathVariable String ville) {
-        return visiteurService.getVisiteursByVille(ville);
+   // VisiteurController.java
+@PostMapping("/login")
+public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+    Visiteur visiteur = visiteurService.getVisiteurByLogin(loginRequest.getUsername());
+    if (visiteur != null && visiteur.getMdp().equals(loginRequest.getPassword())) {
+        return ResponseEntity.ok("Connexion réussie");
+    } else {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Nom d'utilisateur ou mot de passe incorrect");
     }
-
-    // Récupérer les visiteurs embauchés après une date
-    @GetMapping("/embaucheApres/{date}")
-    public List<Visiteur> getVisiteursEmbauchesApres(@PathVariable String date) {
-        LocalDate localDate = LocalDate.parse(date); // Conversion String → LocalDate
-        return visiteurService.getVisiteursEmbauchesApres(localDate);
-    }
-
-    // Récupérer un visiteur par login
-    @GetMapping("/login/{login}")
-    public Visiteur getVisiteurByLogin(@PathVariable String login) {
-        return visiteurService.getVisiteurByLogin(login);
-    }
+}
 }
