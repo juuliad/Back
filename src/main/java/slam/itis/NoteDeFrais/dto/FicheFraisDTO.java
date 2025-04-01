@@ -55,5 +55,4 @@ public class FicheFraisDTO {
         this.idEtat = idEtat;
     }
     private Long idEtat;
-
 }

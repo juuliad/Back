@@ -1,7 +1,8 @@
 package slam.itis.NoteDeFrais.model;
 
-
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,13 +21,13 @@ public class LigneFraisHorsForfait {
     private Double montant;
     private String libelle;
 
-        // Relation avec FicheFrais (ManyToOne : plusieurs lignes hors forfait pour une fiche)
-        @ManyToOne
-        @JoinColumn(name = "fiche_frais_id", nullable = false) // Clé étrangère
-        private FicheFrais ficheFrais;
+    // Relation avec FicheFrais (ManyToOne : plusieurs lignes hors forfait pour une fiche)
+    @ManyToOne
+    @JoinColumn(name = "fiche_frais_id", nullable = false) // Clé étrangère
+    @JsonBackReference // Ajouté pour éviter la boucle infinie lors de la sérialisation
+    private FicheFrais ficheFrais;
 
     // Constructeurs
-
     public LigneFraisHorsForfait(FicheFrais ficheFrais, LocalDate date, Double montant, String libelle) {
         this.ficheFrais = ficheFrais;
         this.date = date;
@@ -75,4 +76,3 @@ public class LigneFraisHorsForfait {
         this.libelle = libelle;
     }
 }
-

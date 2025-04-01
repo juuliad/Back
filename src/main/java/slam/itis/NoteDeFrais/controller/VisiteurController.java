@@ -53,7 +53,7 @@ public class VisiteurController {
 public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
     Visiteur visiteur = visiteurService.getVisiteurByLogin(loginRequest.getUsername());
     if (visiteur != null && visiteur.getMdp().equals(loginRequest.getPassword())) {
-        return ResponseEntity.ok("Connexion réussie");
+        return ResponseEntity.ok(visiteur); // Retourner l'objet Visiteur
     } else {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Nom d'utilisateur ou mot de passe incorrect");
     }

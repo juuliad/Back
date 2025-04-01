@@ -65,7 +65,15 @@
         <artifactId>modelmapper</artifactId>
         <version>3.0.0</version>
         </dependency>		
+		
+		<dependency>
+    <groupId>com.fasterxml.jackson.datatype</groupId>
+    <artifactId>jackson-datatype-jsr310</artifactId>
+    <version>2.18.2</version> <!-- Utilise la même version que ton Jackson, ou une plus récente -->
+</dependency>
+
 	</dependencies>
+	
 
 	<build>
 		<plugins>

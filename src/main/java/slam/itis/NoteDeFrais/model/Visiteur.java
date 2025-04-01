@@ -1,9 +1,10 @@
 package slam.itis.NoteDeFrais.model;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,9 +18,10 @@ public class Visiteur {
     private String login;
     private String mdp;
     // rajouter un role
-
     // Relation avec FicheFrais
-    @OneToMany(mappedBy = "visiteur", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "visiteur", cascade = CascadeType.ALL)
+    @JsonIgnore  // Ignorer la sérialisation de fichesFrais
+   
     private List<FicheFrais> fichesFrais;
 
     // Constructeurs
