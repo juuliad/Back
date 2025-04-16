@@ -45,18 +45,14 @@ public class FicheFraisController {
     // 🔹 Ajouter une nouvelle fiche de frais
     @PostMapping
     public ResponseEntity<FicheFrais> createFicheFrais(@RequestBody FicheFrais ficheFrais) {
-       // System.out.println("FicheFrais reçue : " + ficheFrais);
-        // Vérification et réinitialisation de l'ID pour éviter tout conflit
-        //ficheFrais.setId(null);
         FicheFrais newFicheFrais = service.createFicheFrais(ficheFrais);
         return ResponseEntity.status(HttpStatus.CREATED).body(newFicheFrais);
     }
-    
+
     // 🔹 Modifier une fiche de frais existante
     @PutMapping("/{id}")
     public ResponseEntity<?> updateFicheFrais(@PathVariable Long id, @RequestBody FicheFrais ficheFrais) {
         try {
-            ficheFrais.setId(id); // Assure que l'objet a bien le bon ID
             FicheFrais updatedFiche = service.updateFicheFrais(ficheFrais, id);
             return ResponseEntity.ok(updatedFiche);
         } catch (IllegalArgumentException e) {

@@ -31,6 +31,11 @@ public class FicheFraisService {
         if (ficheFrais == null) {
             throw new IllegalArgumentException("La fiche frais ne peut pas être null.");
         }
+
+        // ⚠️ Détection automatique du hors forfait
+        ficheFrais.setHorsForfait(ficheFrais.getMontantValide() != null && ficheFrais.getMontantValide() > 150);
+        ficheFrais.setDateModif(LocalDate.now());
+
         return ficheFraisRepository.save(ficheFrais);
     }
 
@@ -41,14 +46,18 @@ public class FicheFraisService {
         FicheFrais existingFiche = ficheFraisRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("FicheFrais non trouvée avec ID: " + id));
 
-        // Appliquer les modifications seulement si les valeurs sont non nulles
         if (ficheFrais.getMontantValide() != null) {
             existingFiche.setMontantValide(ficheFrais.getMontantValide());
         }
+
         if (ficheFrais.getNbJustificatifs() != null) {
             existingFiche.setNbJustificatifs(ficheFrais.getNbJustificatifs());
         }
-        existingFiche.setDateModif(LocalDate.now()); // Date mise à jour automatiquement
+
+        // ⚠️ Mise à jour du statut hors forfait automatiquement
+        existingFiche.setHorsForfait(existingFiche.getMontantValide() != null && existingFiche.getMontantValide() > 150);
+
+        existingFiche.setDateModif(LocalDate.now());
 
         return ficheFraisRepository.save(existingFiche);
     }

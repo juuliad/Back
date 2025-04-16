@@ -19,8 +19,10 @@ public class FicheFrais {
     private Integer nbJustificatifs;
     private Double montantValide;
     private LocalDate dateModif;
+    private boolean horsForfait;
 
     
+
 
     // Relation avec Visiteur
     @ManyToOne
@@ -65,6 +67,9 @@ public class FicheFrais {
 
     public Visiteur getVisiteur() { return visiteur; }
     public void setVisiteur(Visiteur visiteur) { this.visiteur = visiteur; }
+
+    public boolean isHorsForfait() { return horsForfait; }
+    public void setHorsForfait(boolean horsForfait) { this.horsForfait = horsForfait; }
 /* 
     public List<LigneFraisForfait> getLignesFraisForfait() { return lignesFraisForfait; }
     public void setLignesFraisForfait(List<LigneFraisForfait> lignesFraisForfait) { this.lignesFraisForfait = lignesFraisForfait; }
